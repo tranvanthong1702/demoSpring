@@ -20,15 +20,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Transactional
+@CrossOrigin("*")
 public class AdminController {
 
     @Autowired
@@ -78,7 +75,8 @@ public class AdminController {
         int page = 1;
         try {
             page = Integer.parseInt(pageStr);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
+
         }
         final int MAX_RESULT = 5;
         final int MAX_NAVIGATION_PAGE = 10;
