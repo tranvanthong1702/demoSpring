@@ -2,6 +2,7 @@ package com.example.demospring.controller;
 
 import java.util.List;
 
+import com.example.demospring.model.ProductInfo;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import com.example.demospring.dao.OrderDAO;
 import com.example.demospring.dao.ProductDAO;
@@ -89,6 +90,19 @@ public class AdminController {
     }
 
     // GET: Hiển thị product
+    @RequestMapping({ "/admin/listproduct" })
+    public String listProductHandler(Model model, //
+                                     @RequestParam(value = "name", defaultValue = "") String likeName,
+                                     @RequestParam(value = "page", defaultValue = "1") int page) {
+        final int maxResult = 5;
+        final int maxNavigationPage = 10;
+
+        PaginationResult<ProductInfo> result = productDAO.queryProducts(page, //
+                maxResult, maxNavigationPage, likeName);
+
+        model.addAttribute("paginationProducts", result);
+        return "admin/product/listProduct";
+    }
     @RequestMapping(value = { "/admin/product" }, method = RequestMethod.GET)
     public String product(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
         ProductForm productForm = null;

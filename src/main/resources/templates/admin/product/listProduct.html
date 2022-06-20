@@ -1,0 +1,92 @@
+
+<th:block th:include="./layout/_header"></th:block>
+<th:block th:include="./layout/_aside"></th:block>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Dashboard</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard v1</li>
+                    </ol>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+        <!-- /.content-wrapper -->
+        <div class="m-3">
+            <div><h2 class="text-center">Manage Product </h2> </div>
+
+
+            <button type="button" class="btn btn-outline-success mt-3 mb-3"><a style="text-decoration:none;"  href="">Add Product</a></button>
+            <table class="table table-bordered text-center mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">CODE</th>
+                    <th scope="col">IMAGE</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">CREATE_DATE</th>
+                    <th scope="col">ACTION</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="prodInfo : ${paginationProducts.list}">
+                    <td></td>
+                    <td><span th:utext="${prodInfo.code}"></span></td>
+                    <td style="width: 100px"><img class="product-image"
+                             th:src="@{|/productImage?code=${prodInfo.code}|}"  /></td>
+                    <td><span th:utext="${prodInfo.name}"></span></td>
+                    <td><span th:utext="${#numbers.formatDecimal(prodInfo.price,3,2,'COMMA')}"></span></td>
+                    <td></span></td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-outline-primary"><a style="text-decoration:none" >Update</a></button>
+
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('you really want to delete')">Delete</button>
+
+                    </td>
+
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- /.content -->
+    <div class="page-navigator" style="text-align: center" th:if="${paginationProducts.totalPages > 1}">
+        <th:block th:each="page : ${paginationProducts.navigationPages}">
+
+            <a th:href="@{|/admin/listproduct?page=${page}|}" th:if="${page != -1}"
+               class="nav-item" th:utext="${page}"></a>
+
+            <span class="nav-item" th:if="${page == -1}"> ... </span>
+
+        </th:block>
+    </div>
+</div>
+<th:block th:include="./layout/_footer"></th:block>

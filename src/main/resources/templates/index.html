@@ -1,25 +1,78 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Books Shop Online</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
-</head>
-<body>
-<th:block th:include="/_header"></th:block>
-<th:block th:include="/_menu"></th:block>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Books Shop Online</title>-->
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />-->
+<!--</head>-->
+<!--<body>-->
+<!--<th:block th:include="/_header"></th:block>-->
+<!--<th:block th:include="/_menu"></th:block>-->
 
-<div class="page-title">Shopping Cart Demo</div>
-<div class="demo-container">
-    <h3>Demo content</h3>
-    <ul>
-        <li>Buy online</li>
-        <li>Admin pages</li>
-        <li>Reports</li>
-    </ul>
+<!--<div class="page-title">Shopping Cart Demo</div>-->
+<!--<div class="demo-container">-->
+<!--    <h3>Demo content</h3>-->
+<!--    <ul>-->
+<!--        <li>Buy online</li>-->
+<!--        <li>Admin pages</li>-->
+<!--        <li>Reports</li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<th:block th:include="/_footer"></th:block>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<th:block th:include="./layout/_header"></th:block>
+<th:block th:include="./layout/_aside"></th:block>
+<th:block th:include="./layout/_content"></th:block>
+<div class="m-3">
+    <div><h2 class="text-center">Manage Post </h2> </div>
+
+
+    <button type="button" class="btn btn-outline-success mt-3 mb-3"><a style="text-decoration:none;"  href="">Add Post</a></button>
+    <table class="table table-bordered text-center mt-3">
+        <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Image</th>
+            <th scope="col">status</th>
+            <th scope="col">Category</th>
+            <th scope="col">Created_at</th>
+
+
+            <th scope="col">Action</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td ></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">
+                <button type="button" class="btn btn-outline-primary"><a style="text-decoration:none" >Update</a></button>
+
+                <button type="submit" class="btn btn-danger" onclick="return confirm('you really want to delete')">delete</button>
+
+            </td>
+
+
+        </tr>
+
+        </tbody>
+    </table>
+
 </div>
-
-<th:block th:include="/_footer"></th:block>
-
-</body>
-</html>
+<th:block th:include="./layout/_footer"></th:block>
